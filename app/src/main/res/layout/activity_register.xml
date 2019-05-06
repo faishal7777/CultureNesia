@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login.LoginActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/bg_top_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_top_login_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bg_top_register"
+        app:layout_constraintVertical_bias="0">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="Silahkan Daftar"
+            android:textColor="@color/colorFont"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="CultureNesia butuh informasimu nih."
+            android:textColor="@color/colorFont"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="E-mail"
+            android:textColor="@color/colorFont"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/email_Register"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/form"
+            android:fontFamily="@font/quicksand"
+            android:hint="Masukkan e-mail mu"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="Username"
+            android:textColor="@color/colorFont"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/username_Register"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/form"
+            android:fontFamily="@font/quicksand"
+            android:hint="Masukkan username mu"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="Password"
+            android:textColor="@color/colorFont"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/password_Register"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/form"
+            android:fontFamily="@font/quicksand"
+            android:hint="Masukkan password mu"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/btn_Register"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/btn_on"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="daftar"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Sudah punya akun? "
+            android:textColor="@color/colorFont"
+            android:fontFamily="@font/quicksand"/>
+
+        <TextView
+            android:id="@+id/login_From_Register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Masuk disini."
+            android:textColor="@color/colorFont"
+            android:fontFamily="@font/quicksand_bold"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

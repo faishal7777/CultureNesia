@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "669509572246",
+    "firebase_url": "https://culturenesia-9703d.firebaseio.com",
+    "project_id": "culturenesia-9703d",
+    "storage_bucket": "culturenesia-9703d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669509572246:android:60860c980703b26f",
+        "android_client_info": {
+          "package_name": "com.runupstdio.culturenesia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669509572246-6q73kjipqi01vpdpqgqlcb3kvhqsdjeu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.runupstdio.culturenesia",
+            "certificate_hash": "aac7db75cd1ed57c3a7e7f866b4631c9a3dcd486"
+          }
+        },
+        {
+          "client_id": "669509572246-a2p0vlr7vmhg9nehvssb35549crhhjs9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs4gnG1bg4XSDUHQ0JN6Ct9jM8yUM6aTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669509572246-a2p0vlr7vmhg9nehvssb35549crhhjs9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

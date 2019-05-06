@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#BA7FFF</color>
+    <color name="colorPrimaryDark">#8751CB</color>
+    <color name="colorAccent">#FFA7A7</color>
+    <color name="colorAccentLight">#FFD9D8</color>
+    <color name="colorFont">#707070</color>
+    <color name="colorForm">#DBDBDB</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="bg">#E6E6E6</color>
+    <color name="pertanyaan">#CA7778</color>
+</resources>

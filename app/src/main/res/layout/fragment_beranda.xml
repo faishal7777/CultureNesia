@@ -21,53 +21,48 @@
                     android:fontFamily="@font/quicksand_bold"
                     android:text="Culture"
                     android:textColor="@color/white"
-                    android:textSize="20dp" />
+                    android:textSize="20sp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quicksand"
                     android:text="Nesia"
                     android:textColor="@color/white"
-                    android:textSize="20dp" />
+                    android:textSize="20sp" />
             </LinearLayout>
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:paddingTop="20dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:text="Culture"
-                        android:textColor="@color/colorFont"
-                        android:textSize="16dp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand"
-                        android:text="Nesia"
-                        android:textColor="@color/colorFont"
-                        android:textSize="16dp" />
-                </LinearLayout>
+                    android:fontFamily="@font/quicksand_bold"
+                    android:layout_marginStart="20dp"
+                    android:text="Quotes Nih"
+                    android:textColor="@color/colorFont"
+                    android:textSize="16sp" />
                 <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/imageSlider"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"/>
+                    android:layout_height="170dp"
+                    app:fillColor="@color/white"
+                    app:pageColor="#50FFFFFF"
+                    app:slideInterval="3000"
+                    app:radius="5dp"
+                    app:pageTransformer="flow"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -75,16 +70,16 @@
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
                 <TextView
+                    android:layout_marginStart="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quicksand_bold"
                     android:text="Breaking News"
                     android:textColor="@color/colorFont"
-                    android:textSize="16dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:textSize="16sp"/>
                 <com.synnapps.carouselview.CarouselView
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"/>
+                    android:layout_height="170dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -92,15 +87,16 @@
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
                 <TextView
+                    android:layout_marginStart="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quicksand_bold"
                     android:text="Breaking News"
                     android:textColor="@color/colorFont"
-                    android:textSize="16dp" android:layout_marginBottom="10dp"/>
+                    android:textSize="16sp" />
                 <com.synnapps.carouselview.CarouselView
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"/>
+                    android:layout_height="170dp"/>
             </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

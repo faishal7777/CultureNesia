@@ -5,16 +5,18 @@ import android.os.Parcelable;
 
 public class ProvinsiEnsiklopedi implements Parcelable {
 
-    public final String name, img;
+    public final String name;
 
-    public ProvinsiEnsiklopedi(String name, String img) {
+    public String getName() {
+        return name;
+    }
+
+    public ProvinsiEnsiklopedi(String name) {
         this.name = name;
-        this.img = img;
     }
 
     protected ProvinsiEnsiklopedi(Parcel in) {
         name = in.readString();
-        img = in.readString();
     }
 
     public static final Creator<ProvinsiEnsiklopedi> CREATOR = new Creator<ProvinsiEnsiklopedi>() {
@@ -37,6 +39,5 @@ public class ProvinsiEnsiklopedi implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeString(img);
     }
 }

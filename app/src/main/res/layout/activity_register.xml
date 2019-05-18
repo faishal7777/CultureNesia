@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login.LoginActivity"
+    tools:context=".LoginActivity"
     android:orientation="vertical">
 
     <LinearLayout
@@ -49,7 +49,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/quicksand_medium"
             android:text="E-mail"
             android:textColor="@color/colorFont"
@@ -68,26 +68,6 @@
             android:paddingRight="20dp"
             android:textSize="16dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/quicksand_medium"
-            android:text="Username"
-            android:textColor="@color/colorFont"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/username_Register"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/form"
-            android:fontFamily="@font/quicksand"
-            android:hint="Masukkan username mu"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textSize="16dp" />
 
         <TextView
             android:layout_width="wrap_content"

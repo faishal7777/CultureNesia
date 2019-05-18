@@ -6,6 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 
 
 /**
@@ -13,17 +17,25 @@ import android.view.ViewGroup;
  */
 public class BerandaFragment extends Fragment {
 
-
-    public BerandaFragment() {
-        // Required empty public constructor
-    }
-
+    CarouselView sliderLayout;
+    int[] sampleImages = {R.drawable.quote1, R.drawable.quote1, R.drawable.quote1, R.drawable.quote1};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_beranda, container, false);
+        View v = inflater.inflate(R.layout.fragment_beranda, container, false);
+
+        sliderLayout = v.findViewById(R.id.imageSlider);
+        sliderLayout.setPageCount(sampleImages.length);
+        sliderLayout.setImageListener(imageListener);
+
+        return v;
     }
 
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setImageResource(sampleImages[position]);
+        }
+    };
 }

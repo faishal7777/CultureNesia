@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login.LoginActivity"
+    tools:context=".LoginActivity"
     android:orientation="vertical">
 
     <LinearLayout
@@ -37,7 +37,8 @@
                 android:background="@drawable/bg_profile"
                 android:gravity="center">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_Profil_Akun"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/profile" />
@@ -51,6 +52,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/username_Akun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quicksand_bold"
@@ -59,6 +61,7 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/email_Akun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quicksand"

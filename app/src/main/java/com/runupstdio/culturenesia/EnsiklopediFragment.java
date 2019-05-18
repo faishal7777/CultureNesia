@@ -9,46 +9,95 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.runupstdio.culturenesia.Adapter.ProvinsiAdapter;
 import com.runupstdio.culturenesia.Model.ProvinsiEnsiklopedi;
 import com.runupstdio.culturenesia.Model.PulauEnsiklopedi;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EnsiklopediFragment extends Fragment {
+public class EnsiklopediFragment extends Fragment{
+
+    RecyclerView rv_Search;
+    RecyclerView rv_Ensiklopedi;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ensiklopedi, container, false);
 
-        RecyclerView rv_Ensiklopedi = view.findViewById(R.id.rv_Ensiklopedi);
+        rv_Ensiklopedi = view.findViewById(R.id.rv_Ensiklopedi);
         rv_Ensiklopedi.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        ArrayList<PulauEnsiklopedi> pulau = new ArrayList<>();
+        //Initialize your Firebase app
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        ArrayList<ProvinsiEnsiklopedi> pulau_jawa = new ArrayList<>();
-        pulau_jawa.add(new ProvinsiEnsiklopedi("Jawa Timur", "https://picsum.photos/500"));
-        pulau_jawa.add(new ProvinsiEnsiklopedi("Jawa Tengah", "https://picsum.photos/500"));
-        pulau_jawa.add(new ProvinsiEnsiklopedi("Jawa Barat", "https://picsum.photos/500"));
+        // Reference to your entire Firebase database
+        DatabaseReference parentReference = database.getReference().child("Ensiklopedi");
 
-        PulauEnsiklopedi mJawa = new PulauEnsiklopedi("Pulau Jawa", pulau_jawa);
-        pulau.add(mJawa);
+        //reading data from firebase
+        parentReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                final List<PulauEnsiklopedi> pulau = new ArrayList<>();
+                for (final DataSnapshot snapshot : dataSnapshot.getChildren()){
 
-        ArrayList<ProvinsiEnsiklopedi> pulau_sumatra = new ArrayList<>();
-        pulau_sumatra.add(new ProvinsiEnsiklopedi("Aceh", "https://picsum.photos/500"));
-        pulau_sumatra.add(new ProvinsiEnsiklopedi("Sumaatra Barat", "https://picsum.photos/500"));
-        pulau_sumatra.add(new ProvinsiEnsiklopedi("Riau", "https://picsum.photos/500"));
+                    final String ParentKey = snapshot.getKey().toString();
 
-        PulauEnsiklopedi mSumatra = new PulauEnsiklopedi("Pulau Sumatra", pulau_sumatra);
-        pulau.add(mSumatra);
+                    snapshot.child("Ensiklopedi").getValue();
 
-        ProvinsiAdapter adapter = new ProvinsiAdapter(pulau);
-        rv_Ensiklopedi.setAdapter(adapter);
+                    DatabaseReference childReference =
+                            FirebaseDatabase.getInstance().getReference().child("Ensiklopedi").child(ParentKey);
+                    childReference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            final List<ProvinsiEnsiklopedi> provinsi = new ArrayList<>();
+
+
+                            for (DataSnapshot snapshot1:dataSnapshot.getChildren())
+                            {
+                                final String ChildValue =  snapshot1.getValue().toString();
+
+                                snapshot1.child("Ensiklopedi").getValue();
+
+                                provinsi.add(new ProvinsiEnsiklopedi(ChildValue));
+
+                            }
+
+                            pulau.add(new PulauEnsiklopedi(ParentKey, provinsi));
+
+                            ProvinsiAdapter adapter = new ProvinsiAdapter(pulau);
+
+                            rv_Ensiklopedi.setAdapter(adapter);
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            // Failed to read value
+                            System.out.println("Failed to read value." + error.toException());
+                        }
+
+                    });}}
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        rv_Search = view.findViewById(R.id.rv_Search);
+        rv_Search.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         return view;
     }
 }

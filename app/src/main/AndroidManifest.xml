@@ -14,8 +14,13 @@
         android:roundIcon="@drawable/ic_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QuizActivity"></activity>
-        <activity android:name=".ClickedPageActivity" />
+        <activity android:name=".SetProfileActivity"></activity>
+        <activity
+            android:name=".QuizActivity"
+            android:theme="@style/FragmentClub"/>
+        <activity
+            android:name=".ClickedPageActivity"
+            android:theme="@style/hideActionBar"/>
         <activity
             android:name=".Splash.SplashActivity"
             android:theme="@style/NoActionBar">
@@ -32,7 +37,7 @@
             android:name=".RegisterActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".Login.LoginActivity"
+            android:name=".LoginActivity"
             android:theme="@style/NoActionBar" />
 
         <meta-data

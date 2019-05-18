@@ -1,9 +1,12 @@
 package com.runupstdio.culturenesia.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.runupstdio.culturenesia.ClickedPageActivity;
 import com.runupstdio.culturenesia.Model.ProvinsiEnsiklopedi;
 import com.runupstdio.culturenesia.Model.PulauEnsiklopedi;
 import com.runupstdio.culturenesia.R;
@@ -30,16 +33,26 @@ public class ProvinsiAdapter extends ExpandableRecyclerViewAdapter<PulauViewHold
         return new ProvinsiViewHolder(v);
     }
 
-    @Override
-    public void onBindGroupViewHolder(PulauViewHolder holder, int flatPosition, ExpandableGroup group) {
-        final PulauEnsiklopedi pulau = (PulauEnsiklopedi) group;
-        holder.bind(pulau);
-    }
 
     @Override
     public void onBindChildViewHolder(ProvinsiViewHolder holder, int flatPosition, ExpandableGroup group, int childIndex) {
-        final ProvinsiEnsiklopedi provinsi = (ProvinsiEnsiklopedi) group.getItems().get(childIndex);
-        holder.bind(provinsi);
+        final ProvinsiEnsiklopedi provinsi = ((PulauEnsiklopedi)group).getItems().get(childIndex);
+        holder.bind(provinsi, group);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String prov = provinsi.getName();
+                Toast.makeText(v.getContext(), provinsi.getName(), Toast.LENGTH_SHORT).show();
+                Intent clickedProvinsi = new Intent(v.getContext(), ClickedPageActivity.class);
+                clickedProvinsi.putExtra("provinsi", prov);
+                v.getContext().startActivity(clickedProvinsi);
+            }
+        });
+    }
+
+    @Override
+    public void onBindGroupViewHolder(PulauViewHolder holder, int flatPosition, ExpandableGroup group) {
+        holder.bind(group);
     }
 }
 

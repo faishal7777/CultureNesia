@@ -90,6 +90,7 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/highScore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -98,7 +99,7 @@
                 android:background="@drawable/bg_highscore2"
                 android:fontFamily="@font/quicksand_bold"
                 android:padding="8dp"
-                android:text="1243823"
+                android:text="0"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -125,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/quicksand_bold"
-                android:text="Pengaturan Akun"
+                android:text="Logout Akun"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
         </LinearLayout>

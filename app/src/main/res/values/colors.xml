@@ -10,4 +10,6 @@
     <color name="black">#000000</color>
     <color name="bg">#E6E6E6</color>
     <color name="pertanyaan">#CA7778</color>
+    <color name="colorGreen">#3CD641</color>
+    <color name="colorRed">#FF4B4B</color>
 </resources>

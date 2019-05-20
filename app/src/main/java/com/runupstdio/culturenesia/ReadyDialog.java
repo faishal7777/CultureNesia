@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class ReadyDialog extends DialogFragment {
 
-    Button mOke;;
+    Button mOke;
     int idLevel = 0;
 
     @Override

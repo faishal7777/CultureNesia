@@ -3,7 +3,9 @@ package com.runupstdio.culturenesia;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +14,22 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.runupstdio.culturenesia.Model.User;
 import com.runupstdio.culturenesia.Splash.SplashActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AkunFragment extends Fragment {
 
-    TextView viewEmail, viewUsername;
+    TextView viewEmail, viewUsername, viewHighscore;
     CircleImageView viewImgProfil;
     FirebaseAuth mAuth;
     FirebaseUser user;
-//    FirebaseDatabase
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,6 +40,7 @@ public class AkunFragment extends Fragment {
         viewImgProfil = v.findViewById(R.id.img_Profil_Akun);
         viewUsername = v.findViewById(R.id.username_Akun);
         viewEmail = v.findViewById(R.id.email_Akun);
+        viewHighscore = v.findViewById(R.id.highScore);
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
@@ -89,6 +97,38 @@ public class AkunFragment extends Fragment {
             if (user.getDisplayName() != null){
                 viewUsername.setText(user.getDisplayName());
             }
+
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid());
+
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    User userInfo = dataSnapshot.getValue(User.class);
+                    String score = userInfo.getScore();
+                    Log.d("score", score);
+                    viewHighscore.setText(score);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+//            reference.addListenerForSingleValueEvent(eventListener);
+//            reference.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    User halu = dataSnapshot.getValue(User.class);
+//                    String highScore = halu.getScore();
+//                    viewHighscore.setText(highScore);
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
         }
     }
 }

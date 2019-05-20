@@ -27,9 +27,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.runupstdio.culturenesia.Model.UserStoreData;
 
 import java.io.IOException;
 
@@ -44,6 +46,8 @@ public class SetProfileActivity extends AppCompatActivity implements View.OnClic
     private ProgressDialog progressDialog;
     static int PReqCode = 1;
     static int REQUESTCODE = 1;
+    FirebaseUser currentUser;
+    public String score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,8 @@ public class SetProfileActivity extends AppCompatActivity implements View.OnClic
         mBtnSetProfile.setOnClickListener(this);
         imgProfileRegister = findViewById(R.id.img_Profil_Register);
         imgProfileRegister.setOnClickListener(this);
+        score = "0";
+        currentUser = mAuth.getCurrentUser();
     }
 
     @Override
@@ -130,6 +136,7 @@ public class SetProfileActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void saveUserInfo() {
+
         String mUsername = usernameSetProfile.getText().toString();
         if (mUsername.isEmpty()){
             usernameSetProfile.setError("Name Required");
@@ -137,7 +144,26 @@ public class SetProfileActivity extends AppCompatActivity implements View.OnClic
             return;
         }
         FirebaseUser user = mAuth .getCurrentUser();
+
+        UserStoreData userModel = new UserStoreData(
+                mUsername,
+                currentUser.getEmail(),
+                score
+        );
+
         if (user != null){
+            FirebaseDatabase.getInstance().getReference("Users")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(SetProfileActivity.this, "Profile Saved", Toast.LENGTH_SHORT).show();
+                    } else {
+                        //display a failure message
+                    }
+                }
+            });
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
                     .setDisplayName(mUsername)
                     .setPhotoUri(Uri.parse(profileImgUrl))

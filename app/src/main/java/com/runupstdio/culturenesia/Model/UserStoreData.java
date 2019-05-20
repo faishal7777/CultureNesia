@@ -1,12 +1,15 @@
 package com.runupstdio.culturenesia.Model;
 
-public class User {
+public class UserStoreData {
 
     public String username;
     public String email;
     public String score;
 
-    public User() {
+    public UserStoreData(String username, String email, String score) {
+        this.username = username;
+        this.email = email;
+        this.score = score;
     }
 
     public String getUsername() {

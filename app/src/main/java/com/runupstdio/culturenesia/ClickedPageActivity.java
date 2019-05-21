@@ -33,6 +33,7 @@ public class ClickedPageActivity extends AppCompatActivity implements Observable
     Bundle ini;
     String extras;
     Context mContext;
+    ViewLoad loading;
     private ObservableScrollView mScrollView;
     private View mToolbarView, mImageView;
     private int mParallaxImageHeight;
@@ -50,6 +51,8 @@ public class ClickedPageActivity extends AppCompatActivity implements Observable
         mContext = this;
         ini = getIntent().getExtras();
         extras = ini.getString("provinsi");
+        loading = new ViewLoad(this);
+        loading.showDialog();
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         mScrollView = findViewById(R.id.scroll);
@@ -106,6 +109,62 @@ public class ClickedPageActivity extends AppCompatActivity implements Observable
             extras = "01";
         } else if (extras.equals("DKI Jakarta")){
             extras ="02";
+        } else if (extras.equals("Jawa Barat")){
+            extras ="03";
+        } else if (extras.equals("Jawa Tengah")){
+            extras ="04";
+        } else if (extras.equals("Jawa Timur")){
+            extras ="05";
+        } else if (extras.equals("Yogyakarta")){
+            extras ="06";
+        } else if (extras.equals("Bali")){
+            extras ="07";
+        } else if (extras.equals("Nusa Tenggara Barat")){
+            extras ="08";
+        } else if (extras.equals("Nusa Tenggara Timur")){
+            extras ="09";
+        } else if (extras.equals("Kalimantan Barat")){
+            extras ="10";
+        } else if (extras.equals("Kalimantan Timur")){
+            extras ="11";
+        } else if (extras.equals("Kalimantan Utara")){
+            extras ="12";
+        } else if (extras.equals("Kalimantan Tengah")){
+            extras ="13";
+        } else if (extras.equals("Kalimantan Selatan")){
+            extras ="14";
+        } else if (extras.equals("Gorontalo")){
+            extras ="15";
+        } else if (extras.equals("Sulawesi Barat")){
+            extras ="16";
+        } else if (extras.equals("Sulawesi Selatan")){
+            extras ="17";
+        } else if (extras.equals("Sulawesi Tengah")){
+            extras ="18";
+        } else if (extras.equals("Sulawesi Tenggara")){
+            extras ="19";
+        } else if (extras.equals("Sulawesi Utara")){
+            extras ="20";
+        } else if (extras.equals("Maluku")){
+            extras ="21";
+        } else if (extras.equals("Maluku Utara")){
+            extras ="22";
+        } else if (extras.equals("Papua")){
+            extras ="23";
+        } else if (extras.equals("Papua Barat")){
+            extras ="24";
+        } else if (extras.equals("Aceh")){
+            extras ="25";
+        } else if (extras.equals("Bengkulu")){
+            extras ="26";
+        } else if (extras.equals("Jambi")){
+            extras ="27";
+        } else if (extras.equals("Bangka Belitung")){
+            extras ="28";
+        } else if (extras.equals("Kepulauan Riau")){
+            extras ="29";
+        } else if (extras.equals("Lampung")){
+            extras ="30";
         }
     }
 
@@ -201,6 +260,8 @@ public class ClickedPageActivity extends AppCompatActivity implements Observable
                         .asBitmap()
                         .load(sImgWisata2)
                         .into(imgWisata2);
+
+                loading.hideDialog();
             }
 
             @Override

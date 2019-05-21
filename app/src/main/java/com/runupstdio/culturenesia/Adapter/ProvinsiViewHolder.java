@@ -35,7 +35,7 @@ public class ProvinsiViewHolder extends ChildViewHolder {
             imgProvinsi.setImageResource(R.drawable.kalimantan);
         } else if (group.getTitle().equals("Kepulauan Maluku")) {
             imgProvinsi.setImageResource(R.drawable.kepulauan_maluku);
-        } else if (group.getTitle().equals("Pulau Nusa Tenggara")) {
+        } else if (group.getTitle().equals("Kepulauan Nusa Tenggara")) {
             imgProvinsi.setImageResource(R.drawable.kepulauan_nusa_tenggara);
         } else if (group.getTitle().equals("Pulau Papua")) {
             imgProvinsi.setImageResource(R.drawable.papua);

@@ -1,6 +1,5 @@
 package com.runupstdio.culturenesia;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -9,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.runupstdio.culturenesia.Splash.SplashActivity;
 
 public class QuizActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,7 +20,9 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private static int BTN_TIME_OUT = 2000;
     private Quizionaire question = new Quizionaire();
     private String answer;
-    private int questionLength = question.questions.length;
+    private int questionLength1 = question.questions1.length;
+    private int questionLength2 = question.questions2.length;
+    private int questionLength3 = question.questions3.length;
     private int questionNow;
 
     @Override
@@ -49,7 +48,20 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
         score = 0;
 //        mScoreQuiz.setText(score);
-        start();
+        countDown = new CountDownTimer(60000, 1000){
+            @Override
+            public void onTick(long millisUntilFinished) {
+                String waktu = "" + millisUntilFinished / 1000;
+                time.setText(waktu);
+            }
+
+            @Override
+            public void onFinish() {
+                showDialog();
+            }
+        };
+
+        countDown.start();
     }
 
     @Override
@@ -63,12 +75,33 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            if (questionNow != (questionLength-1)){
-                                btn_1.setBackgroundResource(R.drawable.bg_jawaban);
-                                questionNow++;
-                                nextQuestion(questionNow);
-                            } else {
-                                showDialog();
+                            if (extras.equals("1")){
+                                if (questionNow != (questionLength1-1)){
+                                    btn_1.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
+                            } else if (extras.equals("2")){
+                                if (questionNow != (questionLength2-1)){
+                                    btn_1.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
+                            } else if (extras.equals("3") || extras.equals("4")){
+                                if (questionNow != (questionLength3-1)){
+                                    btn_1.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
                             }
                         }
                     }, BTN_TIME_OUT);
@@ -78,12 +111,33 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            if (questionNow != (questionLength-1)){
-                                btn_1.setBackgroundResource(R.drawable.bg_jawaban);
-                                questionNow++;
-                                nextQuestion(questionNow);
-                            } else {
-                                startActivity(new Intent(QuizActivity.this, SplashActivity.class));
+                            if (extras.equals("1")){
+                                if (questionNow != (questionLength1-1)){
+                                    btn_1.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
+                            } else if (extras.equals("2")){
+                                if (questionNow != (questionLength2-1)){
+                                    btn_1.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
+                            } else if (extras.equals("3") || extras.equals("4")){
+                                if (questionNow != (questionLength3-1)){
+                                    btn_1.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
                             }
                         }
                     }, BTN_TIME_OUT);
@@ -97,12 +151,33 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            if (questionNow != (questionLength-1)){
-                                btn_2.setBackgroundResource(R.drawable.bg_jawaban);
-                                questionNow++;
-                                nextQuestion(questionNow);
-                            } else {
-                                startActivity(new Intent(QuizActivity.this, SplashActivity.class));
+                            if (extras.equals("1")){
+                                if (questionNow != (questionLength1-1)){
+                                    btn_2.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
+                            } else if (extras.equals("2")){
+                                if (questionNow != (questionLength2-1)){
+                                    btn_2.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
+                            } else if (extras.equals("3") || extras.equals("4")){
+                                if (questionNow != (questionLength3-1)){
+                                    btn_2.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
                             }
                         }
                     }, BTN_TIME_OUT);
@@ -112,12 +187,33 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            if (questionNow != (questionLength-1)){
-                                btn_2.setBackgroundResource(R.drawable.bg_jawaban);
-                                questionNow++;
-                                nextQuestion(questionNow);
-                            } else {
-                                startActivity(new Intent(QuizActivity.this, SplashActivity.class));
+                            if (extras.equals("1")){
+                                if (questionNow != (questionLength1-1)){
+                                    btn_2.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
+                            } else if (extras.equals("2")){
+                                if (questionNow != (questionLength2-1)){
+                                    btn_2.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
+                            } else if (extras.equals("3") || extras.equals("4")){
+                                if (questionNow != (questionLength3-1)){
+                                    btn_2.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
                             }
                         }
                     }, BTN_TIME_OUT);
@@ -131,12 +227,33 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            if (questionNow != (questionLength-1)){
-                                btn_3.setBackgroundResource(R.drawable.bg_jawaban);
-                                questionNow++;
-                                nextQuestion(questionNow);
-                            } else {
-                                startActivity(new Intent(QuizActivity.this, SplashActivity.class));
+                            if (extras.equals("1")){
+                                if (questionNow != (questionLength1-1)){
+                                    btn_3.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
+                            } else if (extras.equals("2")){
+                                if (questionNow != (questionLength2-1)){
+                                    btn_3.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
+                            } else if (extras.equals("3") || extras.equals("4")){
+                                if (questionNow != (questionLength3-1)){
+                                    btn_3.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
                             }
                         }
                     }, BTN_TIME_OUT);
@@ -146,12 +263,33 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            if (questionNow != (questionLength-1)){
-                                btn_3.setBackgroundResource(R.drawable.bg_jawaban);
-                                questionNow++;
-                                nextQuestion(questionNow);
-                            } else {
-                                startActivity(new Intent(QuizActivity.this, SplashActivity.class));
+                            if (extras.equals("1")){
+                                if (questionNow != (questionLength1-1)){
+                                    btn_3.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
+                            } else if (extras.equals("2")){
+                                if (questionNow != (questionLength2-1)){
+                                    btn_3.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
+                            } else if (extras.equals("3") || extras.equals("4")){
+                                if (questionNow != (questionLength3-1)){
+                                    btn_3.setBackgroundResource(R.drawable.bg_jawaban);
+                                    questionNow++;
+                                    nextQuestion(questionNow);
+                                } else {
+                                    showDialog();
+                                    countDown.cancel();
+                                }
                             }
                         }
                     }, BTN_TIME_OUT);
@@ -166,51 +304,35 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
     private void nextQuestion(int num) {
         if (extras.equals("1")){
-            mPertanyaan.setText(question.getQuestion(num));
-            btn_1.setText(question.getChoice1(num));
-            btn_2.setText(question.getChoice2(num));
-            btn_3.setText(question.getChoice3(num));
+            mPertanyaan.setText(question.getQuestionLv1(num));
+            btn_1.setText(question.getChoice1Lv1(num));
+            btn_2.setText(question.getChoice2Lv1(num));
+            btn_3.setText(question.getChoice3Lv1(num));
 
-            answer = question.getCorrectAnswer(num);
+            answer = question.getCorrectAnswerLv1(num);
         } else if (extras.equals("2")){
-            mPertanyaan.setText(question.getQuestion(num));
-            btn_1.setText(question.getChoice1(num));
-            btn_2.setText(question.getChoice2(num));
-            btn_3.setText(question.getChoice3(num));
+            mPertanyaan.setText(question.getQuestionLv2(num));
+            btn_1.setText(question.getChoice1Lv2(num));
+            btn_2.setText(question.getChoice2Lv2(num));
+            btn_3.setText(question.getChoice3Lv2(num));
 
-            answer = question.getCorrectAnswer(num);
+            answer = question.getCorrectAnswerLv2(num);
         } else if (extras.equals("3")){
-            mPertanyaan.setText(question.getQuestion(num));
-            btn_1.setText(question.getChoice1(num));
-            btn_2.setText(question.getChoice2(num));
-            btn_3.setText(question.getChoice3(num));
+            mPertanyaan.setText(question.getQuestionLv3(num));
+            btn_1.setText(question.getChoice1Lv3(num));
+            btn_2.setText(question.getChoice2Lv3(num));
+            btn_3.setText(question.getChoice3Lv3(num));
 
-            answer = question.getCorrectAnswer(num);
+            answer = question.getCorrectAnswerLv3(num);
         } else if (extras.equals("4")){
-            mPertanyaan.setText(question.getQuestion(num));
-            btn_1.setText(question.getChoice1(num));
-            btn_2.setText(question.getChoice2(num));
-            btn_3.setText(question.getChoice3(num));
+            mPertanyaan.setText(question.getQuestionLv3(num));
+            btn_1.setText(question.getChoice1Lv3(num));
+            btn_2.setText(question.getChoice2Lv3(num));
+            btn_3.setText(question.getChoice3Lv3(num));
 
-            answer = question.getCorrectAnswer(num);
+            answer = question.getCorrectAnswerLv3(num);
         }
 
-    }
-
-    public void start(){
-        countDown = new CountDownTimer(60000, 1000){
-            @Override
-            public void onTick(long millisUntilFinished) {
-                String waktu = "" + millisUntilFinished / 1000;
-                time.setText(waktu);
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-        };
-        countDown.start();
     }
 
     public void showDialog(){

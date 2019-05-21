@@ -28,7 +28,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Waktunya hanya 30 detik!"
+        android:text="Waktunya hanya 60 detik!"
         android:fontFamily="@font/quicksand"
         android:textSize="16sp"
         android:textColor="#707070"/>

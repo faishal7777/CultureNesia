@@ -14,7 +14,9 @@
         android:roundIcon="@drawable/ic_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SetProfileActivity"></activity>
+        <activity
+            android:name=".SetProfileActivity"
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".QuizActivity"
             android:theme="@style/FragmentClub"/>

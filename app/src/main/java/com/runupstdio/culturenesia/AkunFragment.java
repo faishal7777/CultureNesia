@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -30,13 +31,17 @@ public class AkunFragment extends Fragment {
     CircleImageView viewImgProfil;
     FirebaseAuth mAuth;
     FirebaseUser user;
+    ViewLoad loading;
+    LinearLayout mLogOut;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View v = inflater.inflate(R.layout.fragment_akun, container, false);
+        loading = new ViewLoad(getActivity());
+        loading.showDialog();
 
+        mLogOut = v.findViewById(R.id.logout);
         viewImgProfil = v.findViewById(R.id.img_Profil_Akun);
         viewUsername = v.findViewById(R.id.username_Akun);
         viewEmail = v.findViewById(R.id.email_Akun);
@@ -45,6 +50,18 @@ public class AkunFragment extends Fragment {
         user = mAuth.getCurrentUser();
 
         loadUserInfo();
+
+        mLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                Intent logOut= new Intent(v.getContext(), SplashActivity.class);
+                logOut.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                logOut.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(logOut);
+
+            }
+        });
 
         return  v;
     }
@@ -60,7 +77,7 @@ public class AkunFragment extends Fragment {
     private void loadUserInfo() {
         user = mAuth.getCurrentUser();
 
-        String currentUrlProduct = "http://cdn2.tstatic.net/bangka/foto/bank/images/tukul-arwana_20160509_104925.jpg";
+        String currentUrlProduct = "https://pbs.twimg.com/profile_images/1114801544468127745/g1_G2KBC_400x400.png";
 
 //        url_db = FirebaseDatabase.getInstance().getReference().child(retrievedName).child("Url");
 //        StorageReference ref = FirebaseStorage.getInstance().getReference().child(retrievedName).child("images/profile_image");
@@ -92,6 +109,8 @@ public class AkunFragment extends Fragment {
                         .asBitmap()
                         .load(currentUrlProduct)
                         .into(viewImgProfil);
+
+                Log.d("url : ", user.getPhotoUrl().toString());
             }
 
             if (user.getDisplayName() != null){
@@ -107,6 +126,7 @@ public class AkunFragment extends Fragment {
                     String score = userInfo.getScore();
                     Log.d("score", score);
                     viewHighscore.setText(score);
+                    loading.hideDialog();
                 }
 
                 @Override
@@ -114,21 +134,6 @@ public class AkunFragment extends Fragment {
 
                 }
             });
-
-//            reference.addListenerForSingleValueEvent(eventListener);
-//            reference.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                    User halu = dataSnapshot.getValue(User.class);
-//                    String highScore = halu.getScore();
-//                    viewHighscore.setText(highScore);
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                }
-//            });
         }
     }
 }

@@ -112,7 +112,7 @@ public class SetProfileActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void UpdateUserInfo() {
-        StorageReference mStorage = FirebaseStorage.getInstance().getReference("profilepics/" + System.currentTimeMillis() + ".jpg");
+        final StorageReference mStorage = FirebaseStorage.getInstance().getReference("profilepics/" + System.currentTimeMillis() + ".jpg");
 
         if (pickedImgUri != null) {
             progressDialog.setMessage("Uploading");
@@ -122,7 +122,10 @@ public class SetProfileActivity extends AppCompatActivity implements View.OnClic
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
-                            profileImgUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
+
+                            profileImgUrl = mStorage.getDownloadUrl().toString();
+//
+//                            profileImgUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

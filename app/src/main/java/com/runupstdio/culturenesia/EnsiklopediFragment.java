@@ -30,10 +30,14 @@ public class EnsiklopediFragment extends Fragment{
     RecyclerView rv_Search;
     RecyclerView rv_Ensiklopedi;
 
+    ViewLoad loading;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ensiklopedi, container, false);
+        loading = new ViewLoad(getActivity());
+        loading.showDialog();
 
         rv_Ensiklopedi = view.findViewById(R.id.rv_Ensiklopedi);
         rv_Ensiklopedi.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -78,6 +82,8 @@ public class EnsiklopediFragment extends Fragment{
                             ProvinsiAdapter adapter = new ProvinsiAdapter(pulau);
 
                             rv_Ensiklopedi.setAdapter(adapter);
+
+                            loading.hideDialog();
 
                         }
 

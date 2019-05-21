@@ -31,7 +31,8 @@
             android:id="@+id/img_Profil_Register"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/img_profile_blank"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_profile_blank" />
 
         <TextView
             android:layout_width="wrap_content"

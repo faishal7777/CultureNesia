@@ -20,17 +20,18 @@ public class PulauViewHolder extends GroupViewHolder {
 
     @Override
     public void expand() {
-        namaPulau.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down_black_24dp, 0);
+        namaPulau.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_up_black_24dp, 0);
         Log.i("Adapter", "expand");
     }
 
     @Override
     public void collapse() {
+        namaPulau.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down_black_24dp, 0);
         Log.i("Adapter", "collapse");
-        namaPulau.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_up_black_24dp, 0);
     }
 
     public void bind(ExpandableGroup group){
         namaPulau.setText(group.getTitle());
+        namaPulau.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down_black_24dp, 0);
     }
 }
